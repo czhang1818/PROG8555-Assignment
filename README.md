@@ -1,28 +1,66 @@
-# 🛒 Product Catalog (ASP.NET Core MVC)
+# Product Catalog
 
-A simple web application built with ASP.NET Core MVC that demonstrates the fundamentals of the Model-View-Controller design pattern. This project allows users to browse a catalog of technology products and view detailed information for each item.
+An ASP.NET Core MVC application for managing products and categories with full CRUD functionality.
 
-## 🚀 Features
+## Features
 
-* **Product Listing (ShowAll):** Displays a responsive table of all products with images, names, and prices.
-* **Product Details (ShowById):** A dedicated detail view using Bootstrap Cards to show full descriptions and larger images.
-* **Business Logic Layer:** Simulates a data source using a static list service, separating data management from the Controller.
-* **Responsive UI:** Styled with Bootstrap for a clean look on both desktop and mobile.
+- **Category Management**: Create, view, edit, and delete product categories
+- **Product Management**: Full CRUD operations with category assignment
+- **SQL Server Database**: Entity Framework Core with LocalDB
+- **Tag Helpers**: Modern ASP.NET Core UI components
 
-## 🛠️ Technologies Used
+## Technologies
 
-* **Framework:** ASP.NET Core MVC (.NET 10.0)
-* **Language:** C#
-* **Frontend:** HTML5, Razor Views (.cshtml), Bootstrap 5
-* **IDE:** Visual Studio 2026
+- ASP.NET Core MVC (.NET 10)
+- Entity Framework Core
+- SQL Server LocalDB
+- Bootstrap 5
 
-## 📂 Project Structure
+## Project Structure
 
-The project follows the standard MVC architecture:
+```
+ProductCatalog/
+├── Controllers/
+│   ├── CategoryController.cs
+│   ├── ProductController.cs
+│   └── HomeController.cs
+├── Models/
+│   ├── Category.cs
+│   └── Product.cs
+├── Data/
+│   └── AppDbContext.cs
+├── Views/
+│   ├── Category/
+│   ├── Product/
+│   ├── Home/
+│   └── Shared/
+└── Migrations/
+```
 
-* **Models (`/Models/Product.cs`):** Defines the data structure (Id, Name, Price, Image, Description).
-* **Views (`/Views/Product/`):**
-    * `ShowAll.cshtml`: The main catalog table.
-    * `ShowById.cshtml`: The individual product detail card.
-* **Controllers (`/Controllers/ProductController.cs`):** Handles user requests and directs traffic.
-* **Services (`/Services/ProductBL.cs`):** Acts as the "Mock Database," storing the list of products and handling data retrieval logic.
+## Database Schema
+
+### Category
+
+| Column       | Type   | Description              |
+| ------------ | ------ | ------------------------ |
+| Id           | int    | Primary key              |
+| CategoryName | string | Category name (required) |
+
+### Product
+
+| Column       | Type    | Description             |
+| ------------ | ------- | ----------------------- |
+| Id           | int     | Primary key             |
+| ProductName  | string  | Product name            |
+| ProductPrice | decimal | Price                   |
+| ImageUrl     | string  | Image path              |
+| Description  | string  | Product description     |
+| CategoryId   | int     | Foreign key to Category |
+
+## Author
+
+Chunxi Zhang
+
+## License
+
+This project is for educational purposes - PROG8555 Microsoft Web Technologies.
